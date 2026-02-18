@@ -238,6 +238,11 @@ footer{
     color:#cbd5e1;
 }
 
+.nav-brand{
+    text-decoration:none;
+    color:inherit;
+}
+
 /* RESPONSIVE */
 @media(max-width:768px){
     .hero h1{
@@ -253,7 +258,9 @@ footer{
 <body>
 
 <nav>
-    <div class="gradient-text"><strong>WebGen Solutions</strong></div>
+    <div class="gradient-text">
+        <strong><a href="#hero" class="nav-brand">WebGen Solutions</a></strong>
+    </div>
     <div>
         <a href="#services">Solutions</a>
         <a href="#portfolio">Portfolio</a>
@@ -262,7 +269,7 @@ footer{
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
     <img src="images/WebGen Solutions.jpg" alt="WebGen Solutions logo">
     <h1 class="gradient-text">Is Your Business Invisible Online?</h1>
     <p>We build powerful digital systems that help local businesses grow, automate, and compete.</p>

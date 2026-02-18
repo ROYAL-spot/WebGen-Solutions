@@ -5,7 +5,7 @@
 ## 🌐 Overview
 WebGen Solutions is a digital service agency dedicated to modernizing businesses . This repository contains the official landing page, showcasing our core services, featured prototypes, and technical capabilities.
 
-**Live Site:** [Insert your Netlify URL here]
+**Live Site:** [https://webgensolutions.netlify.app/]
 
 ---
 
