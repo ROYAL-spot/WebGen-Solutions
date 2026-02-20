@@ -1,0 +1,30 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+
+  # ================= SECURITY HEADERS =================
+
+  X-Frame-Options = "DENY"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "strict-origin-when-cross-origin"
+
+  Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+  Cross-Origin-Opener-Policy = "same-origin"
+  Cross-Origin-Resource-Policy = "same-origin"
+
+  Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+  Content-Security-Policy = """
+  default-src 'self';
+  script-src 'self';
+  style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+  img-src 'self' https: data:;
+  font-src 'self' https://cdnjs.cloudflare.com;
+  connect-src 'self';
+  frame-ancestors 'none';
+  base-uri 'self';
+  object-src 'none';
+  form-action 'self' https://pay.yoco.com;
+  upgrade-insecure-requests;
+  """

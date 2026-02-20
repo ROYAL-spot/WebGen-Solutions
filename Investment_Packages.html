@@ -1,171 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Packages | WebGen Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --bg: #0B0F1A;
-            --surface: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --purple: #A855F7;
-            --blue: #3B82F6;
-            --cyan: #60A5FA;
-            --text: #E5E7EB;
-            --muted: #94A3B8;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investment Packages | WebGen Solutions</title>
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 20px;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        .container {
-            max-width: 1200px;
-            margin: 80px auto;
-        }
+<style>
+:root{
+--bg:#0B0F1A;
+--surface:rgba(255,255,255,0.05);
+--border:rgba(255,255,255,0.1);
+--purple:#A855F7;
+--blue:#3B82F6;
+--cyan:#60A5FA;
+--text:#E5E7EB;
+--muted:#94A3B8;
+}
 
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+*{box-sizing:border-box;}
 
-        .gradient-text {
-            background: linear-gradient(to right, var(--purple), var(--cyan));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.5rem;
-        }
+body{
+font-family:'Segoe UI',sans-serif;
+background:var(--bg);
+color:var(--text);
+margin:0;
+padding:20px;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
+.container{
+max-width:1200px;
+margin:80px auto;
+}
 
-        .card {
-            background: var(--surface);
-            -webkit-backdrop-filter: blur(20px);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            padding: 40px;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-        }
+.header{
+text-align:center;
+margin-bottom:60px;
+}
 
-        .card.featured {
-            border: 2px solid var(--purple);
-            transform: scale(1.02);
-        }
+.gradient-text{
+background:linear-gradient(to right,var(--purple),var(--cyan));
+-webkit-background-clip:text;
+background-clip:text;
+-webkit-text-fill-color:transparent;
+font-size:2.5rem;
+}
 
-        .price {
-            font-size: 2.5rem;
-            margin: 15px 0 5px;
-        }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
 
-        .maintenance {
-            color: var(--cyan);
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
+.card{
+background:var(--surface);
+-webkit-backdrop-filter:blur(20px);
+backdrop-filter:blur(20px);
+border:1px solid var(--border);
+padding:40px;
+border-radius:20px;
+display:flex;
+flex-direction:column;
+}
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 30px;
-            flex-grow: 1;
-        }
+.card.featured{
+border:2px solid var(--purple);
+transform:scale(1.02);
+}
 
-        li {
-            margin-bottom: 15px;
-            color: var(--muted);
-            line-height: 1.6;
-        }
+.price{
+font-size:2.5rem;
+margin:15px 0 5px;
+}
 
-        li i {
-            color: var(--cyan);
-            margin-right: 10px;
-        }
+.maintenance{
+color:var(--cyan);
+font-weight:bold;
+margin-bottom:25px;
+}
 
-        .btn {
-            display: block;
-            text-align: center;
-            padding: 15px;
-            background: linear-gradient(to right, var(--purple), var(--blue));
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-        }
-    </style>
+ul{
+list-style:none;
+padding:0;
+margin-bottom:30px;
+flex-grow:1;
+}
+
+li{
+margin-bottom:15px;
+color:var(--muted);
+line-height:1.6;
+}
+
+li i{
+color:var(--cyan);
+margin-right:10px;
+}
+
+.btn{
+display:block;
+text-align:center;
+padding:15px;
+background:linear-gradient(to right,var(--purple),var(--blue));
+color:white;
+text-decoration:none;
+border-radius:12px;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn:hover{
+opacity:0.9;
+}
+
+.note{
+font-size:0.85rem;
+color:var(--muted);
+margin-top:15px;
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
-    <div class="header">
-        <h1 class="gradient-text">Investment Packages</h1>
-        <p>Transparent pricing for high-performance digital systems.</p>
-    </div>
 
-    <div class="grid">
-        <div class="card">
-            <h3>Starter Presence</h3>
-            <div class="price">R 1,500</div>
-            <div class="maintenance">+ R150 Monthly Maint.</div>
-            <ul>
-                <li><i class="fas fa-check"></i> <strong>Custom Landing Page:</strong> Fully responsive coded design tailored to your brand.</li>
-                <li><i class="fas fa-check"></i> <strong>Domain Registration:</strong> One year of your custom .co.za or .com domain.</li>
-                <li><i class="fas fa-check"></i> <strong>Namecheap Hosting:</strong> High-speed server setup on Namecheap Stellar.</li>
-                <li><i class="fas fa-check"></i> <strong>SSL Security:</strong> Green padlock/HTTPS setup for visitor trust.</li>
-                <li><i class="fas fa-check"></i> <strong>Business Email:</strong> Professional address (e.g., info@yourcompany.com).</li>
-            </ul>
-            <a href="https://pay.yoco.com/r/2VVDZW" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-    Pay R1500 Now
+<div class="header">
+<h1 class="gradient-text">Investment Packages</h1>
+<p>Professional website development with required care plans for performance & security.</p>
+</div>
+
+<div class="grid">
+
+<!-- STARTER -->
+<div class="card">
+<h3>Starter Presence</h3>
+<div class="price">R 1,500</div>
+<div class="maintenance">+ R150 / Month Care Plan</div>
+
+<ul>
+<li><i class="fas fa-check"></i> Custom Landing Page</li>
+<li><i class="fas fa-check"></i> Domain & Hosting Setup</li>
+<li><i class="fas fa-check"></i> SSL Security</li>
+<li><i class="fas fa-check"></i> Business Email</li>
+</ul>
+
+<a href="https://pay.yoco.com/r/2VVDZW"
+target="_blank"
+rel="noopener noreferrer"
+class="btn">
+Pay R1500 Setup
 </a>
-        </div>
 
-        <div class="card featured">
-            <h3>Business Growth</h3>
-            <div class="price">R 4,500</div>
-            <div class="maintenance">+ R250 Monthly Maint.</div>
-            <ul>
-                <li><i class="fas fa-check"></i> <strong>Multi-Page Website:</strong> Up to 5 custom-coded pages.</li>
-                <li><i class="fas fa-check"></i> <strong>Booking/Contact System:</strong> Lead generation or reservation forms with PHP logic.</li>
-                <li><i class="fas fa-check"></i> <strong>Database Integration:</strong> Secure MySQL database for managing client information.</li>
-                <li><i class="fas fa-check"></i> <strong>Namecheap Stellar Plus:</strong> Managed hosting on high-performance servers.</li>
-                <li><i class="fas fa-check"></i> <strong>Priority Support:</strong> Faster response times for updates.</li>
-            </ul>
-            <a href="https://pay.yoco.com/r/mO50P3" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="btn">
-    Pay R4500 Now
+<p class="note">First month of Care Plan included. Subscription activation required after payment.</p>
+
+</div>
+
+<!-- BUSINESS -->
+<div class="card featured">
+<h3>Business Growth</h3>
+<div class="price">R 4,500</div>
+<div class="maintenance">+ R250 / Month Care Plan</div>
+
+<ul>
+<li><i class="fas fa-check"></i> Up to 5 Custom Pages</li>
+<li><i class="fas fa-check"></i> Booking / Lead System</li>
+<li><i class="fas fa-check"></i> Database Integration</li>
+<li><i class="fas fa-check"></i> Admin Dashboard</li>
+<li><i class="fas fa-check"></i> Priority Support</li>
+</ul>
+
+<a href="https://pay.yoco.com/r/mO50P3"
+target="_blank"
+rel="noopener noreferrer"
+class="btn">
+Pay R4500 Setup
 </a>
-        </div>
 
-        <div class="card">
-            <h3>Data Intelligence</h3>
-            <div class="price">Custom</div>
-            <div class="maintenance">Quote Based on Scope</div>
-            <ul>
-                <li><i class="fas fa-check"></i> <strong>Interactive Dashboards:</strong> Custom R-Shiny tools for real-time sales tracking.</li>
-                <li><i class="fas fa-check"></i> <strong>AI Forecasting:</strong> Automated inventory and revenue predictions.</li>
-                <li><i class="fas fa-check"></i> <strong>Advanced Analytics:</strong> Clean visualization of complex Excel/CSV reports.</li>
-                <li><i class="fas fa-check"></i> <strong>Full Maintenance:</strong> Dedicated security and high-performance server hosting.</li>
-            </ul>
-            <a href="index.html#contact" class="btn">Inquire Now</a>
-        </div>
-    </div>
+<p class="note">First month of Care Plan included. Subscription activation required after payment.</p>
+
+</div>
+
+<!-- DATA -->
+<div class="card">
+<h3>Data Intelligence</h3>
+<div class="price">Custom</div>
+<div class="maintenance">+ R350 / Month Care Plan</div>
+
+<ul>
+<li><i class="fas fa-check"></i> R-Shiny Dashboards</li>
+<li><i class="fas fa-check"></i> AI Forecasting</li>
+<li><i class="fas fa-check"></i> Advanced Analytics</li>
+<li><i class="fas fa-check"></i> Dedicated Support</li>
+</ul>
+
+<a href="index.html#contact" class="btn">
+Request Custom Quote
+</a>
+
+<p class="note">Care Plan required for hosting & security.</p>
+
+</div>
+
+</div>
+
 </div>
 
 </body>
