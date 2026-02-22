@@ -4,207 +4,229 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Investment Packages | WebGen Solutions</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
-:root{
---bg:#0B0F1A;
---surface:rgba(255,255,255,0.05);
---border:rgba(255,255,255,0.1);
---purple:#A855F7;
---blue:#3B82F6;
---cyan:#60A5FA;
---text:#E5E7EB;
---muted:#94A3B8;
+:root {
+    --bg: #0B0F1A;
+    --surface: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+    --purple: #A855F7;
+    --blue: #3B82F6;
+    --text: #E5E7EB;
+    --muted: #94A3B8;
 }
 
-*{box-sizing:border-box;}
+* { box-sizing: border-box; }
 
-body{
-font-family:'Segoe UI',sans-serif;
-background:var(--bg);
-color:var(--text);
-margin:0;
-padding:20px;
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding-top: 120px; 
 }
 
-.container{
-max-width:1200px;
-margin:80px auto;
+/* --- FIXED NAVBAR --- */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(11, 15, 26, 0.8);
+    /* FIXED: -webkit prefix listed before standard property */
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
 }
 
-.header{
-text-align:center;
-margin-bottom:60px;
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
 }
 
-.gradient-text{
-background:linear-gradient(to right,var(--purple),var(--cyan));
--webkit-background-clip:text;
-background-clip:text;
--webkit-text-fill-color:transparent;
-font-size:2.5rem;
+/* FIXED: Moved inline style from HTML to CSS */
+.logo span {
+    color: var(--purple);
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:30px;
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
 }
 
-.card{
-background:var(--surface);
--webkit-backdrop-filter:blur(20px);
-backdrop-filter:blur(20px);
-border:1px solid var(--border);
-padding:40px;
-border-radius:20px;
-display:flex;
-flex-direction:column;
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: 0.3s;
 }
 
-.card.featured{
-border:2px solid var(--purple);
-transform:scale(1.02);
+.nav-links a:hover { color: var(--purple); }
+
+/* --- GRID SYSTEM --- */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
 }
 
-.price{
-font-size:2.5rem;
-margin:15px 0 5px;
+.gradient-text {
+    background: linear-gradient(to right, var(--purple), var(--blue));
+    /* FIXED: Added standard background-clip for compatibility */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.8rem;
+    margin: 0;
 }
 
-.maintenance{
-color:var(--cyan);
-font-weight:bold;
-margin-bottom:25px;
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+    align-items: stretch;
 }
 
-ul{
-list-style:none;
-padding:0;
-margin-bottom:30px;
-flex-grow:1;
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    height: 100%;
 }
 
-li{
-margin-bottom:15px;
-color:var(--muted);
-line-height:1.6;
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--purple);
 }
 
-li i{
-color:var(--cyan);
-margin-right:10px;
+.card h3 { color: var(--purple); margin: 0; font-size: 1.25rem; }
+.price { font-size: 1.8rem; font-weight: bold; margin: 15px 0 5px; }
+.maintenance { color: var(--muted); font-size: 0.85rem; margin-bottom: 25px; }
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    flex-grow: 1;
 }
 
-.btn{
-display:block;
-text-align:center;
-padding:15px;
-background:linear-gradient(to right,var(--purple),var(--blue));
-color:white;
-text-decoration:none;
-border-radius:12px;
-font-weight:600;
-transition:0.3s;
+ul li {
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.btn:hover{
-opacity:0.9;
+ul li i { color: var(--purple); font-size: 0.8rem; }
+
+.btn {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: linear-gradient(to right, var(--purple), var(--blue));
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
 }
 
-.note{
-font-size:0.85rem;
-color:var(--muted);
-margin-top:15px;
+@media (max-width: 1200px) {
+    .package-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .package-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<nav>
+    <a href="index.html" class="logo">WebGen <span>Solutions</span></a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="Investment_Packages.html">Investments</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
 
 <div class="header">
-<h1 class="gradient-text">Investment Packages</h1>
-<p>Professional website development with required care plans for performance & security.</p>
+    <h1 class="gradient-text">Investment Packages</h1>
+    <p>Scale your digital presence with professional infrastructure.</p>
 </div>
 
-<div class="grid">
+<div class="package-grid">
+    <div class="card">
+        <h3>Starter Presence</h3>
+        <div class="price">R 1,500</div>
+        <div class="maintenance">+ R150 / Month</div>
+        <ul>
+            <li><i class="fas fa-check"></i> Single Page Design</li>
+            <li><i class="fas fa-check"></i> Mobile Responsive</li>
+            <li><i class="fas fa-check"></i> Contact Form</li>
+            <li><i class="fas fa-check"></i> SEO Setup</li>
+        </ul>
+        <a href="https://pay.yoco.com/r/2fR8ZW" class="btn">Select Package</a>
+    </div>
 
-<!-- STARTER -->
-<div class="card">
-<h3>Starter Presence</h3>
-<div class="price">R 1,500</div>
-<div class="maintenance">+ R150 / Month Care Plan</div>
+    <div class="card">
+        <h3>Business Growth</h3>
+        <div class="price">R 4,500</div>
+        <div class="maintenance">+ R250 / Month</div>
+        <ul>
+            <li><i class="fas fa-check"></i> Up to 5 Custom Pages</li>
+            <li><i class="fas fa-check"></i> Booking/Lead System</li>
+            <li><i class="fas fa-check"></i> Admin Dashboard</li>
+            <li><i class="fas fa-check"></i> Database Logic</li>
+        </ul>
+        <a href="https://pay.yoco.com/r/mO50P3" class="btn">Select Package</a>
+    </div>
 
-<ul>
-<li><i class="fas fa-check"></i> Custom Landing Page</li>
-<li><i class="fas fa-check"></i> Domain & Hosting Setup</li>
-<li><i class="fas fa-check"></i> SSL Security</li>
-<li><i class="fas fa-check"></i> Business Email</li>
-</ul>
+    <div class="card">
+        <h3>Medical Practice</h3>
+        <div class="price">R 6,500</div>
+        <div class="maintenance">+ R450 / Month</div>
+        <ul>
+            <li><i class="fas fa-check"></i> Patient Triage Portal</li>
+            <li><i class="fas fa-check"></i> Medical History PDFs</li>
+            <li><i class="fas fa-check"></i> SMTP Email Alerts</li>
+            <li><i class="fas fa-check"></i> POPIA Data Security</li>
+        </ul>
+        <a href="mailto:somiladyantyi17@gmail.com?subject=Medical%20Portal" class="btn">Enquire Now</a>
+    </div>
 
-<a href="https://pay.yoco.com/r/2VVDZW"
-target="_blank"
-rel="noopener noreferrer"
-class="btn">
-Pay R1500 Setup
-</a>
-
-<p class="note">First month of Care Plan included. Subscription activation required after payment.</p>
-
-</div>
-
-<!-- BUSINESS -->
-<div class="card featured">
-<h3>Business Growth</h3>
-<div class="price">R 4,500</div>
-<div class="maintenance">+ R250 / Month Care Plan</div>
-
-<ul>
-<li><i class="fas fa-check"></i> Up to 5 Custom Pages</li>
-<li><i class="fas fa-check"></i> Booking / Lead System</li>
-<li><i class="fas fa-check"></i> Database Integration</li>
-<li><i class="fas fa-check"></i> Admin Dashboard</li>
-<li><i class="fas fa-check"></i> Priority Support</li>
-</ul>
-
-<a href="https://pay.yoco.com/r/mO50P3"
-target="_blank"
-rel="noopener noreferrer"
-class="btn">
-Pay R4500 Setup
-</a>
-
-<p class="note">First month of Care Plan included. Subscription activation required after payment.</p>
-
-</div>
-
-<!-- DATA -->
-<div class="card">
-<h3>Data Intelligence</h3>
-<div class="price">Custom</div>
-<div class="maintenance">+ R350 / Month Care Plan</div>
-
-<ul>
-<li><i class="fas fa-check"></i> R-Shiny Dashboards</li>
-<li><i class="fas fa-check"></i> AI Forecasting</li>
-<li><i class="fas fa-check"></i> Advanced Analytics</li>
-<li><i class="fas fa-check"></i> Dedicated Support</li>
-</ul>
-
-<a href="index.html#contact" class="btn">
-Request Custom Quote
-</a>
-
-<p class="note">Care Plan required for hosting & security.</p>
-
-</div>
-
-</div>
-
+    <div class="card">
+        <h3>Data Intelligence</h3>
+        <div class="price">Custom</div>
+        <div class="maintenance">+ R350 / Month</div>
+        <ul>
+            <li><i class="fas fa-check"></i> R-Shiny Dashboards</li>
+            <li><i class="fas fa-check"></i> AI Sales Forecasting</li>
+            <li><i class="fas fa-check"></i> Retail Analytics</li>
+            <li><i class="fas fa-check"></i> API Integration</li>
+        </ul>
+        <a href="index.html#contact" class="btn">Request Quote</a>
+    </div>
 </div>
 
 </body>

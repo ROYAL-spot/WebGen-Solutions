@@ -3,166 +3,265 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- ================= SECURITY HEADERS ================= -->
-
-<meta http-equiv="Content-Security-Policy"
-content="
-default-src 'self';
-script-src 'self';
-style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
-img-src 'self' https: data:;
-font-src 'self' https://cdnjs.cloudflare.com;
-connect-src 'self';
-frame-ancestors 'none';
-form-action 'self';
-base-uri 'self';
-object-src 'none';
-upgrade-insecure-requests;">
+<!-- Security Headers -->
+<meta http-equiv="Content-Security-Policy" 
+content="default-src 'self'; 
+         img-src 'self' https: data:; 
+         style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; 
+         script-src 'self' 'unsafe-inline'; 
+         font-src 'self' https://cdnjs.cloudflare.com;">
 
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
-<meta http-equiv="Cross-Origin-Resource-Policy" content="same-origin">
-
-<meta name="robots" content="index, follow">
-
+<meta name="referrer" content="no-referrer">
 <title>WebGen Solutions | Innovative Insight In Action</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-integrity=""
-crossorigin="anonymous"
-referrerpolicy="no-referrer">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
 :root{
---bg:#0B0F1A;
---surface:rgba(255,255,255,0.05);
---border:rgba(255,255,255,0.1);
---purple:#A855F7;
---blue:#3B82F6;
---cyan:#60A5FA;
---text:#E5E7EB;
---muted:#94A3B8;
+    --bg:#0B0F1A;
+    --surface:rgba(255,255,255,0.05);
+    --border:rgba(255,255,255,0.1);
+    --purple:#A855F7;
+    --blue:#3B82F6;
+    --cyan:#60A5FA;
+    --text:#E5E7EB;
+    --muted:#94A3B8;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
 
 body{
-font-family:'Segoe UI',sans-serif;
-background:
-radial-gradient(circle at 20% 20%, rgba(168,85,247,0.15), transparent 40%),
-radial-gradient(circle at 80% 0%, rgba(59,130,246,0.15), transparent 40%),
-var(--bg);
-color:var(--text);
-overflow-x:hidden;
+    font-family:'Segoe UI',sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(168,85,247,0.15), transparent 40%),
+        radial-gradient(circle at 80% 0%, rgba(59,130,246,0.15), transparent 40%),
+        var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
 }
 
-/* NAV */
+/* NAVBAR */
 nav{
-position:fixed;
-width:100%;
-top:0;
--webkit-backdrop-filter: blur(15px);
-backdrop-filter: blur(15px);
-background:rgba(11,15,26,0.7);
-padding:15px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid var(--border);
-z-index:1000;
+    position:fixed;
+    width:100%;
+    top:0;
+    -webkit-backdrop-filter:blur(15px);
+    backdrop-filter:blur(15px);
+    background:rgba(11,15,26,0.7);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--border);
+    z-index:1000;
 }
 
 nav a{
-color:var(--muted);
-text-decoration:none;
-margin-left:25px;
-transition:0.3s;
+    color:var(--muted);
+    text-decoration:none;
+    margin-left:25px;
+    transition:0.3s;
 }
 
-nav a:hover{color:white;}
+nav a:hover{
+    color:white;
+}
 
+/* SECTIONS */
 section{
-padding:120px 20px;
-max-width:1200px;
-margin:auto;
+    padding:120px 20px;
+    max-width:1200px;
+    margin:auto;
 }
 
 .gradient-text{
-background:linear-gradient(to right,var(--purple),var(--cyan));
--webkit-background-clip:text;
-background-clip:text;
--webkit-text-fill-color:transparent;
+    background:linear-gradient(to right,var(--purple),var(--cyan));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
-.hero{text-align:center;padding-top:160px;}
-.hero img{width:170px;margin-bottom:40px;}
-.hero h1{font-size:3.5rem;margin-bottom:20px;}
-.hero p{max-width:650px;margin:20px auto 30px;color:var(--muted);font-size:1.2rem;}
+/* HERO */
+.hero{
+    text-align:center;
+    padding-top:160px;
+}
+
+.hero img{
+    width:170px;
+    margin-bottom:40px;
+}
+
+.hero h1{
+    font-size:3.5rem;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:650px;
+    margin:20px auto 30px;
+    color:var(--muted);
+    font-size:1.2rem;
+}
 
 .btn{
-display:inline-block;
-padding:16px 36px;
-border-radius:12px;
-background:linear-gradient(to right,var(--purple),var(--blue));
-color:white;
-font-weight:600;
-text-decoration:none;
-transition:0.3s;
+    display:inline-block;
+    padding:16px 36px;
+    border-radius:12px;
+    background:linear-gradient(to right,var(--purple),var(--blue));
+    color:white;
+    font-weight:600;
+    text-decoration:none;
+    box-shadow:0 10px 40px rgba(168,85,247,0.5);
+    transition:0.3s;
 }
-.btn:hover{transform:translateY(-4px);}
 
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 50px rgba(59,130,246,0.7);
+}
+
+/* GRID */
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
 }
 
 .card{
-background:var(--surface);
--webkit-backdrop-filter: blur(20px);
-backdrop-filter: blur(20px);
-border:1px solid var(--border);
-padding:35px;
-border-radius:20px;
-transition:0.4s;
-opacity:0;
-transform:translateY(40px);
+    background:var(--surface);
+    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:blur(20px);
+    border:1px solid var(--border);
+    padding:35px;
+    border-radius:20px;
+    transition:0.4s;
+    opacity:0;
+    transform:translateY(40px);
 }
 
-.card.visible{opacity:1;transform:translateY(0);}
-
-/* FORM */
-form{
-max-width:600px;
-margin:30px auto;
-display:flex;
-flex-direction:column;
-gap:15px;
+.card.visible{
+    opacity:1;
+    transform:translateY(0);
 }
 
-form input, form textarea{
-padding:14px;
-border-radius:10px;
-border:1px solid rgba(255,255,255,0.1);
-background:rgba(255,255,255,0.05);
-color:white;
-font-size:1rem;
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(168,85,247,0.6);
+    box-shadow:0 20px 60px rgba(168,85,247,0.25);
 }
 
-form textarea{min-height:120px;resize:vertical;}
+.card i{
+    font-size:2rem;
+    margin-bottom:20px;
+    background:linear-gradient(to right,var(--purple),var(--cyan));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.card p{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+/* PORTFOLIO */
+.portfolio-item{
+    padding:40px;
+}
+
+.portfolio-item h3{
+    margin-bottom:10px;
+}
+
+.portfolio-item .tag{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:20px;
+    background:rgba(168,85,247,0.15);
+    font-size:0.8rem;
+    margin-bottom:15px;
+    color:var(--cyan);
+}
+
+.portfolio-item a{
+    display:inline-block;
+    margin-top:15px;
+    color:var(--cyan);
+    text-decoration:none;
+}
+
+.portfolio-item a:hover{
+    text-decoration:underline;
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+    background:linear-gradient(to right, rgba(168,85,247,0.1), rgba(59,130,246,0.1));
+    border-top:1px solid var(--border);
+}
 
 footer{
-text-align:center;
-padding:60px 20px;
-border-top:1px solid var(--border);
-color:var(--muted);
+    text-align:center;
+    padding:60px 20px;
+    border-top:1px solid var(--border);
+    color:var(--muted);
 }
-.hidden-field {
-display: none;
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.cta-contact{
+    margin:20px 0;
+    color:#cbd5e1;
+}
+
+.cta-footer{
+    margin-top:40px;
+}
+
+.cta p{
+    margin:20px 0;
+    color:#cbd5e1;
+}
+
+.cta > p{
+    margin:20px 0;
+    color:#cbd5e1;
+}
+
+.cta-description{
+    margin:20px 0;
+    color:#cbd5e1;
+}
+
+.cta-text{
+    margin:20px 0;
+    color:#cbd5e1;
+}
+
+.nav-brand{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .hero h1{
+        font-size:2.4rem;
+    }
+    nav{
+        padding:15px 20px;
+    }
 }
 </style>
 </head>
@@ -170,75 +269,105 @@ display: none;
 <body>
 
 <nav>
-<div class="gradient-text"><strong>WebGen Solutions</strong></div>
-<div>
-<a href="#services">Solutions</a>
-<a href="#portfolio">Portfolio</a>
-<a href="Investment_Packages.html">Pricing</a>
-<a href="#contact">Contact</a>
-</div>
+    <div class="gradient-text">
+        <strong><a href="#hero" class="nav-brand">WebGen Solutions</a></strong>
+    </div>
+    <div>
+        <a href="#services">Solutions</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="Investment_Packages.html">Pricing</a> 
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
-
-<section class="hero">
-<img src="images/WebGen Solutions.jpg" alt="WebGen Solutions logo">
-<h1 class="gradient-text">Is Your Business Invisible Online?</h1>
-<p>We build powerful digital systems that help local businesses grow, automate, and compete.</p>
-<a href="#contact" class="btn">Free Digital Consultation</a>
+<!-- HERO -->
+<section class="hero" id="hero">
+    <img src="images/WebGen Solutions.jpg" alt="WebGen Solutions logo">
+    <h1 class="gradient-text">Is Your Business Invisible Online?</h1>
+    <p>We build powerful digital systems that help local businesses grow, automate, and compete.</p>
+    <a href="#contact" class="btn">Free Digital Consultation</a>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
-<h2 class="gradient-text">Core Solutions</h2>
-<div class="grid">
-<div class="card"><h3>Professional Websites</h3></div>
-<div class="card"><h3>E-Commerce Systems</h3></div>
-<div class="card"><h3>Booking Platforms</h3></div>
-<div class="card"><h3>Business Analytics</h3></div>
-<div class="card"><h3>Secure Admin Systems</h3></div>
-<div class="card"><h3>Custom Digital Solutions</h3></div>
-</div>
+    <h2 class="gradient-text section-title">Core Solutions</h2>
+    <div class="grid">
+        <div class="card"><i class="fas fa-globe"></i><h3>Professional Websites</h3><p>Custom-built websites tailored to your brand identity.</p></div>
+        <div class="card"><i class="fas fa-shopping-cart"></i><h3>E-Commerce Systems</h3><p>Secure, scalable online stores with payment integration.</p></div>
+        <div class="card"><i class="fas fa-calendar-check"></i><h3>Booking Platforms</h3><p>Automated reservations and appointment systems.</p></div>
+        <div class="card"><i class="fas fa-chart-line"></i><h3>Business Analytics</h3><p>Real-time dashboards to track performance.</p></div>
+        <div class="card"><i class="fas fa-lock"></i><h3>Secure Admin Systems</h3><p>Role-based access and secure management tools.</p></div>
+        <div class="card"><i class="fas fa-cogs"></i><h3>Custom Digital Solutions</h3><p>Built specifically for your business operations.</p></div>
+    </div>
 </section>
 
-<section id="contact">
-<h2 class="gradient-text">Start Your Project</h2>
+<!-- PORTFOLIO -->
+<section id="portfolio">
+    <h2 class="gradient-text section-title">Featured Work</h2>
+    <div class="grid">
 
-<form name="consultation"
-method="POST"
-data-netlify="true"
-netlify-honeypot="bot-field"
-action="/thank-you.html">
+       <div class="card portfolio-item">
+    <span class="tag">Restaurant System</span>
+    <h3>RoyalSpot Café</h3>
+    <p>Automated reservation system with live kitchen dashboard tracking.</p>
+    <a href="coming_soon.html">View Live Demo →</a>
+</div>
 
-<input type="hidden" name="form-name" value="consultation">
+        <div class="card portfolio-item">
+            <span class="tag">Business Intelligence</span>
+            <h3>Branch Performance Dashboard</h3>
+            <p>Interactive R-Shiny analytics dashboard providing sales insights, branch comparisons and retail forecasting tools.</p>
+            <a href="https://somila247.shinyapps.io/branchbusinessdashboard" target="_blank" rel="noopener noreferrer">View Live Dashboard →</a>
+        </div>
 
-<!-- Honeypot -->
-<p class="hidden-field"></p>
-<label>Do not fill this out:
-<input name="bot-field">
-</label>
-</p>
+       <div class="card portfolio-item">
+    <span class="tag">E-Commerce</span>
+    <h3>Custom Online Store</h3>
+    <h4>RoyalSpot Mart</h4>
+    <p>Full-stack e-commerce platform with order management and inventory tracking.</p>
+    <a href="coming_soon.html">View Live Demo →</a>
+</div>
 
-<input type="text" name="name" placeholder="Full Name" required>
-<input type="email" name="email" placeholder="Email Address" required>
-<input type="tel" name="phone" placeholder="Phone Number" required>
-<textarea name="message" placeholder="Project Details" required></textarea>
+        <div class="card portfolio-item">
+    <span class="tag">Healthcare Tech</span>
+    <h3>GP Web Portal</h3>
+    <h4>Dr. Taylor Practice</h4>
+    <p>A secure medical management system featuring Online Appointment Booking, patient triage, automated history PDFs, and SMTP scheduling.</p>
+    <a href="coming_soon.html">View Project Case Study →</a>
+        </div>
 
-<button type="submit" class="btn">Request Consultation</button>
-</form>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+    <h2 class="gradient-text">Ready to Grow?</h2>
+    <p class="cta-description">Let’s build digital systems that work as hard as you do.</p>
+    <a href="mailto:somiladyantyi17@gmail.com" class="btn">Email somiladyantyi17@gmail.com</a>
+
+    <div class="cta-footer">
+        <p>Call: 081 799 6763</p>
+        <p>Founder – Somila Dyantyi</p>
+    </div>
 </section>
 
 <footer>
-© 2026 WebGen Solutions — Innovative Insight In Action
+    © 2024 WebGen Solutions — Innovative Insight In Action
 </footer>
 
 <script>
-const cards=document.querySelectorAll('.card');
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('visible');
-}
-});
+/* Scroll Animation */
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
 },{threshold:0.1});
-cards.forEach(card=>observer.observe(card));
+
+cards.forEach(card=>{
+    observer.observe(card);
+});
 </script>
 
 </body>
