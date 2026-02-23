@@ -27,51 +27,47 @@ body {
     padding-top: 120px; 
 }
 
-/* --- FIXED NAVBAR --- */
-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    background: rgba(11, 15, 26, 0.8);
-    /* FIXED: -webkit prefix listed before standard property */
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--border);
+
+    /* --- MASTER NAV STYLES (MATCHING INDEX.HTML) --- */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    -webkit-backdrop-filter:blur(15px);
+    backdrop-filter:blur(15px);
+    background:rgba(11,15,26,0.7);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--border);
+    z-index:1000;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
+nav a{
+    color:var(--muted);
+    text-decoration:none;
+    margin-left:25px;
+    transition:0.3s;
 }
 
-/* FIXED: Moved inline style from HTML to CSS */
-.logo span {
-    color: var(--purple);
+nav a:hover{
+    color:white;
 }
 
-.nav-links {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-    margin: 0;
+/* IMPORTANT: Prevents navbar from covering content */
+body {
+    padding-top: 100px; 
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 500;
-    transition: 0.3s;
+/* Hide nav on small mobile screens to prevent overlap */
+@media (max-width: 768px) {
+
+    nav{
+        padding:15px 20px;
+    }
 }
 
-.nav-links a:hover { color: var(--purple); }
 
 /* --- GRID SYSTEM --- */
 .header {
@@ -148,26 +144,30 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
     font-size: 0.9rem;
 }
 
+.nav-brand{
+    text-decoration:none;
+    color:inherit;
+}
+
 @media (max-width: 1200px) {
     .package-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
     .package-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
+
+    nav{
+        padding:15px 20px;
+    }
 }
 </style>
 </head>
 <body>
 
 <nav>
-    <a href="index.html" class="logo">WebGen <span>Solutions</span></a>
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#portfolio">Portfolio</a></li>
-        <li><a href="Investment_Packages.html">Investments</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-    </ul>
+    <div class="gradient-text">
+        <strong><a href="index.html" class="nav-brand">WebGen Solutions</a></strong>
+    </div>
 </nav>
 
 <div class="header">
@@ -186,7 +186,7 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
             <li><i class="fas fa-check"></i> Contact Form</li>
             <li><i class="fas fa-check"></i> SEO Setup</li>
         </ul>
-        <a href="https://pay.yoco.com/r/2fR8ZW" class="btn">Select Package</a>
+        <a href="https://pay.yoco.com/r/7035Av" class="btn">Select Package</a>
     </div>
 
     <div class="card">
@@ -199,7 +199,7 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
             <li><i class="fas fa-check"></i> Admin Dashboard</li>
             <li><i class="fas fa-check"></i> Database Logic</li>
         </ul>
-        <a href="https://pay.yoco.com/r/mO50P3" class="btn">Select Package</a>
+        <a href="https://pay.yoco.com/r/2BJaqa" class="btn">Select Package</a>
     </div>
 
     <div class="card">
@@ -212,7 +212,14 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
             <li><i class="fas fa-check"></i> SMTP Email Alerts</li>
             <li><i class="fas fa-check"></i> POPIA Data Security</li>
         </ul>
-        <a href="mailto:somiladyantyi17@gmail.com?subject=Medical%20Portal" class="btn">Enquire Now</a>
+        <a href="https://pay.yoco.com/r/7vpwPB" 
+   class="btn"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Pay for Starter Presence Package">
+   Select Package
+</a>
+        
     </div>
 
     <div class="card">

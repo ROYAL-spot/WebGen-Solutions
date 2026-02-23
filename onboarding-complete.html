@@ -14,6 +14,62 @@ body{
     padding:40px;
 }
 
+/* --- MASTER NAV STYLES (MATCHING INDEX.HTML) --- */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(11, 15, 26, 0.8);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.logo span {
+    color: #A855F7; /* Purple */
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #E5E7EB;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #A855F7;
+}
+
+/* IMPORTANT: Prevents navbar from covering content */
+body {
+    padding-top: 100px; 
+}
+
+/* Hide nav on small mobile screens to prevent overlap */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+}
 .container{
     max-width:700px;
     margin:auto;
@@ -72,7 +128,10 @@ label {
 </style>
 </head>
 <body>
-
+<nav>
+    <a href="index.html" class="logo">WebGen <span>Solutions</span></a>
+    
+</nav>
 <div class="container">
     <h1>Thank You!</h1>
     <p>Your message has been received. To move forward with your project, please complete the two steps below.</p>
