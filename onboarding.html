@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Onboarding | WebGen Solutions</title>
+
+<style>
+body{
+    background:#0B0F1A;
+    color:white;
+    font-family:sans-serif;
+    margin:0;
+    padding-top:100px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    background:rgba(255,255,255,0.05);
+    padding:40px;
+    border-radius:20px;
+    border:1px solid #A855F7;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    margin-bottom:10px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid #444;
+    color:white;
+    border-radius:5px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    font-size:0.9rem;
+}
+
+.btn{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    background:#A855F7;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn:hover{
+    opacity:0.9;
+}
+
+.hidden-field{
+    display:none;
+}
+
+.access-denied{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="onboardingContainer">
+<h1>Complete Your Onboarding</h1>
+<p>Please complete the form below so we can begin your project.</p>
+
+<form name="client-onboarding"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/onboarding-success.html">
+
+<input type="hidden" name="form-name" value="client-onboarding">
+
+<p class="hidden-field">
+  <label>Don’t fill this out:
+    <input name="bot-field">
+  </label>
+</p>
+
+<input type="text" name="full_name" placeholder="Full Name" required>
+<input type="text" name="business_name" placeholder="Business Name" required>
+<input type="email" name="email" placeholder="Email Address" required>
+<input type="text" name="phone" placeholder="Contact Number" required>
+
+<label for="payment_reference">Payment Reference (from Yoco confirmation email)</label>
+<input type="text" id="payment_reference" name="payment_reference" placeholder="e.g. YOCO-123456" required>
+
+<textarea name="services" placeholder="List your services/products" required></textarea>
+<textarea name="project_goals" placeholder="Describe your website goals" required></textarea>
+
+<label>
+<input type="checkbox" name="terms" required>
+I confirm I have completed my payment and agree to the service terms.
+</label>
+
+<button type="submit" class="btn">Submit Onboarding</button>
+
+</form>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+if (!params.has("paid")) {
+    document.body.innerHTML = '<div class="access-denied"><h2>Access Denied</h2></div>';
+}
+</script>
+
+</body>
+</html>
