@@ -25,6 +25,6 @@
   frame-ancestors 'none';
   base-uri 'self';
   object-src 'none';
-  form-action 'self' https://pay.yoco.com;
+ form-action 'self' https://pay.yoco.com https://webgensolutions.netlify.app;
   upgrade-insecure-requests;
   """

@@ -24,50 +24,29 @@ body {
     background: var(--bg);
     color: var(--text);
     margin: 0;
-    padding-top: 120px; 
-}
-
-
-    /* --- MASTER NAV STYLES (MATCHING INDEX.HTML) --- */
-nav{
-    position:fixed;
-    width:100%;
-    top:0;
-    -webkit-backdrop-filter:blur(15px);
-    backdrop-filter:blur(15px);
-    background:rgba(11,15,26,0.7);
-    padding:15px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid var(--border);
-    z-index:1000;
-}
-
-nav a{
-    color:var(--muted);
-    text-decoration:none;
-    margin-left:25px;
-    transition:0.3s;
-}
-
-nav a:hover{
-    color:white;
-}
-
-/* IMPORTANT: Prevents navbar from covering content */
-body {
     padding-top: 100px; 
 }
 
-/* Hide nav on small mobile screens to prevent overlap */
-@media (max-width: 768px) {
-
-    nav{
-        padding:15px 20px;
-    }
+/* --- MASTER NAV STYLES --- */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background: rgba(11, 15, 26, 0.7);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
 }
 
+.nav-brand {
+    text-decoration: none;
+    color: inherit;
+}
 
 /* --- GRID SYSTEM --- */
 .header {
@@ -77,7 +56,6 @@ body {
 
 .gradient-text {
     background: linear-gradient(to right, var(--purple), var(--blue));
-    /* FIXED: Added standard background-clip for compatibility */
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -91,7 +69,7 @@ body {
     gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 5%;
+    padding: 0 5% 50px;
     align-items: stretch;
 }
 
@@ -142,11 +120,11 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
     border-radius: 10px;
     font-weight: bold;
     font-size: 0.9rem;
+    transition: opacity 0.3s;
 }
 
-.nav-brand{
-    text-decoration:none;
-    color:inherit;
+.btn:hover {
+    opacity: 0.9;
 }
 
 @media (max-width: 1200px) {
@@ -155,10 +133,8 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
 
 @media (max-width: 768px) {
     .package-grid { grid-template-columns: 1fr; }
-
-    nav{
-        padding:15px 20px;
-    }
+    nav { padding: 15px 20px; }
+    .gradient-text { font-size: 2rem; }
 }
 </style>
 </head>
@@ -186,7 +162,8 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
             <li><i class="fas fa-check"></i> Contact Form</li>
             <li><i class="fas fa-check"></i> SEO Setup</li>
         </ul>
-        <a href="https://pay.yoco.com/r/7035Av" class="btn">Select Package</a>
+        <a href="https://pay.yoco.com/r/7035Av?redirectOnPaymentSuccess=https://webgensolutions.netlify.app/onboarding.html" 
+           class="btn" target="_self">Select Package</a>
     </div>
 
     <div class="card">
@@ -199,7 +176,8 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
             <li><i class="fas fa-check"></i> Admin Dashboard</li>
             <li><i class="fas fa-check"></i> Database Logic</li>
         </ul>
-        <a href="https://pay.yoco.com/r/2BJaqa" class="btn">Select Package</a>
+        <a href="https://pay.yoco.com/r/2BJaqa?redirectOnPaymentSuccess=https://webgensolutions.netlify.app/onboarding.html" 
+           class="btn" target="_self">Select Package</a>
     </div>
 
     <div class="card">
@@ -212,14 +190,8 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
             <li><i class="fas fa-check"></i> SMTP Email Alerts</li>
             <li><i class="fas fa-check"></i> POPIA Data Security</li>
         </ul>
-        <a href="https://pay.yoco.com/r/7vpwPB" 
-   class="btn"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Pay for Starter Presence Package">
-   Select Package
-</a>
-        
+        <a href="https://pay.yoco.com/r/7vpwPB?redirectOnPaymentSuccess=https://webgensolutions.netlify.app/onboarding.html" 
+           class="btn" target="_self">Select Package</a>
     </div>
 
     <div class="card">
