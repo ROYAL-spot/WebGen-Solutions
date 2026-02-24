@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 exports.handler = async (event) => {
   try {
     const { paymentId } = JSON.parse(event.body);
@@ -11,13 +9,15 @@ exports.handler = async (event) => {
       };
     }
 
-    // Call Yoco API to verify payment
-    const response = await fetch(`https://payments.yoco.com/api/payments/${paymentId}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${process.env.YOCO_SECRET_KEY}`
+    const response = await fetch(
+      `https://payments.yoco.com/api/payments/${paymentId}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.YOCO_SECRET_KEY}`
+        }
       }
-    });
+    );
 
     const data = await response.json();
 
@@ -36,7 +36,7 @@ exports.handler = async (event) => {
   } catch (error) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Verification failed" })
+      body: JSON.stringify({ verified: false })
     };
   }
 };
