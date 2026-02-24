@@ -13,8 +13,37 @@
 const params = new URLSearchParams(window.location.search);
 const token = params.get("token");
 
+// 🔐 ADMIN ACCESS KEY
+const ADMIN_KEY = "webgen_internal_access_2026";
+
+// If no token → block
 if (!token) {
-    window.location.href = "Investment_Packages.html";
+    window.location.replace("Investment_Packages.html");
+}
+
+// If admin key → allow immediately
+if (token === ADMIN_KEY) {
+    console.log("Admin access granted");
+} else {
+
+    // Otherwise verify payment via Netlify function
+    fetch("/.netlify/functions/verify-payment", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ paymentId: token })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (!data.verified) {
+            window.location.replace("Investment_Packages.html");
+        }
+    })
+    .catch(() => {
+        window.location.replace("Investment_Packages.html");
+    });
+
 }
 </script>
 
@@ -31,7 +60,7 @@ action="/onboarding-success.html">
 
 <input type="hidden" name="form-name" value="client-onboarding">
 
-<!-- Honeypot (accessible but hidden visually) -->
+<!-- Honeypot -->
 <div class="hidden-field">
 <label for="bot-field">Do not fill this field</label>
 <input id="bot-field" name="bot-field" type="text">
