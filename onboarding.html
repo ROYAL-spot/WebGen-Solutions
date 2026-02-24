@@ -1,134 +1,74 @@
-/* ===============================
-   WebGen Solutions - Onboarding
-   Production Safe CSS
-================================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Onboarding | WebGen Solutions</title>
 
-:root {
-  --bg: #0B0F1A;
-  --surface: rgba(255, 255, 255, 0.05);
-  --border: rgba(255, 255, 255, 0.1);
-  --purple: #A855F7;
-  --blue: #3B82F6;
-  --text: #E5E7EB;
-  --muted: #94A3B8;
+<link rel="stylesheet" href="onboarding.css">
+</head>
+<body>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+
+if (!token) {
+    window.location.href = "Investment_Packages.html";
 }
+</script>
 
-* {
-  box-sizing: border-box;
-}
+<div class="container">
+<h1>Complete Your Onboarding</h1>
+<p>Please complete the form below so we can begin your project.</p>
 
-body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  display: flex;
-  justify-content: center;
-  padding: 40px 20px;
-}
+<form id="onboardingForm"
+name="client-onboarding"
+method="POST"
+data-netlify="true"
+netlify-honeypot="bot-field"
+action="/onboarding-success.html">
 
-.container {
-  width: 100%;
-  max-width: 700px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 40px;
-}
+<input type="hidden" name="form-name" value="client-onboarding">
 
-h1 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  background: linear-gradient(to right, var(--purple), var(--blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+<!-- Honeypot (accessible but hidden visually) -->
+<div class="hidden-field">
+<label for="bot-field">Do not fill this field</label>
+<input id="bot-field" name="bot-field" type="text">
+</div>
 
-p {
-  color: var(--muted);
-  margin-bottom: 30px;
-}
+<label for="full_name">Full Name</label>
+<input type="text" id="full_name" name="full_name" required>
 
-form {
-  display: flex;
-  flex-direction: column;
-}
+<label for="business_name">Business Name</label>
+<input type="text" id="business_name" name="business_name" required>
 
-label {
-  font-size: 0.9rem;
-  margin-bottom: 6px;
-  margin-top: 18px;
-}
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" required>
 
-input,
-textarea {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background-color: #111827;
-  color: var(--text);
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
+<label for="phone">Contact Number</label>
+<input type="text" id="phone" name="phone" required>
 
-input:focus,
-textarea:focus {
-  border-color: var(--purple);
-}
+<label for="payment_reference">Payment Reference (from Yoco email)</label>
+<input type="text" id="payment_reference" name="payment_reference" required>
 
-textarea {
-  resize: vertical;
-  min-height: 100px;
-}
+<label for="services">Services / Products Offered</label>
+<textarea id="services" name="services" required></textarea>
 
-.checkbox-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-}
+<label for="project_goals">Describe Your Website Goals</label>
+<textarea id="project_goals" name="project_goals" required></textarea>
 
-.checkbox-wrapper input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-}
+<div class="checkbox-wrapper">
+<input type="checkbox" id="terms" name="terms" required>
+<label for="terms">I confirm I have completed my payment.</label>
+</div>
 
-.btn {
-  margin-top: 30px;
-  padding: 14px;
-  border-radius: 10px;
-  border: none;
-  font-weight: bold;
-  font-size: 0.95rem;
-  background: linear-gradient(to right, var(--purple), var(--blue));
-  color: white;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
+<button type="submit" class="btn" id="submitBtn">Submit Onboarding</button>
 
-.btn:hover {
-  opacity: 0.9;
-}
+</form>
+</div>
 
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
+<script src="onboarding.js"></script>
 
-/* Honeypot hidden but accessible */
-.hidden-field {
-  position: absolute;
-  left: -9999px;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .container {
-    padding: 25px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-}
+</body>
+</html>
