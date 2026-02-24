@@ -1,7 +1,7 @@
 const form = document.getElementById("onboardingForm");
 const submitBtn = document.getElementById("submitBtn");
 
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", function() {
 
     if (!form.checkValidity()) {
         return;
