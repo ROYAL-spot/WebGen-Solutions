@@ -24,49 +24,64 @@ body {
     background: var(--bg);
     color: var(--text);
     margin: 0;
-    padding-top: 100px;
+    padding-top: 100px; 
 }
 
+/* --- MASTER NAV STYLES --- */
 nav {
     position: fixed;
     width: 100%;
     top: 0;
-    -webkit-backdrop-filter:blur(15px);
+   -webkit-backdrop-filter:blur(15px);
     backdrop-filter:blur(15px);
     background: rgba(11, 15, 26, 0.7);
     padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid var(--border);
+    z-index: 1000;
 }
 
+.nav-brand {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- GRID SYSTEM --- */
 .header {
     text-align: center;
     margin-bottom: 60px;
 }
 
 .gradient-text {
-   background:linear-gradient(to right,var(--purple),var(--cyan));
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
+    background: linear-gradient(to right, var(--purple), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.8rem;
+    margin: 0;
 }
 
 .package-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 5% 80px;
+    padding: 0 5% 50px;
+    align-items: stretch;
 }
 
 .card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 35px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
-    transition: 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    height: 100%;
 }
 
 .card:hover {
@@ -74,54 +89,65 @@ nav {
     border-color: var(--purple);
 }
 
-.price {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 15px 0 5px;
-}
-
-.sub-note {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 20px;
-}
+.card h3 { color: var(--purple); margin: 0; font-size: 1.25rem; }
+.price { font-size: 1.8rem; font-weight: bold; margin: 15px 0 5px; }
+.maintenance { color: var(--muted); font-size: 0.85rem; margin-bottom: 25px; }
 
 ul {
     list-style: none;
     padding: 0;
-    margin-bottom: 25px;
+    margin: 0 0 30px 0;
     flex-grow: 1;
 }
 
 ul li {
     margin-bottom: 12px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-ul li i {
-    color: var(--purple);
-    margin-right: 8px;
-}
+ul li i { color: var(--purple); font-size: 0.8rem; }
 
 .btn {
-    padding: 14px;
+    display: block;
     text-align: center;
+    padding: 12px;
     background: linear-gradient(to right, var(--purple), var(--blue));
     color: white;
     text-decoration: none;
     border-radius: 10px;
     font-weight: bold;
+    font-size: 0.9rem;
+    transition: opacity 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 1200px) {
+    .package-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .package-grid { grid-template-columns: 1fr; }
+    nav { padding: 15px 20px; }
+    .gradient-text { font-size: 2rem; }
 }
 </style>
 </head>
 <body>
-
 <nav>
-    <div class="gradient-text"><strong>WebGen Solutions</strong></div>
+    <div class="gradient-text">
+        <strong><a href="index.html" class="nav-brand">WebGen Solutions</a></strong>
+    </div>
 </nav>
 
 <div class="header">
     <h1 class="gradient-text">Investment Packages</h1>
+    <p>Scale your digital presence with professional infrastructure.</p>
     <p>Setup + First Month Included</p>
 </div>
 
@@ -168,6 +194,19 @@ class="btn">Get Started</a>
 <a href="https://pay.yoco.com/r/7339aN?redirectOnPaymentSuccess=https://webgensolutions.netlify.app/onboarding.html?token={PAYMENT_ID}"
 class="btn">Get Started</a>
 </div>
+
+ <div class="card">
+        <h3>Data Intelligence</h3>
+        <div class="price">Custom</div>
+        <div class="sub-note">+ R150 / Month</div>
+        <ul>
+            <li><i class="fas fa-check"></i> R-Shiny Dashboards</li>
+            <li><i class="fas fa-check"></i> AI Sales Forecasting</li>
+            <li><i class="fas fa-check"></i> Retail Analytics</li>
+            <li><i class="fas fa-check"></i> API Integration</li>
+        </ul>
+        <a href="index.html#contact" class="btn">Request Quote</a>
+    </div>
 
 </div>
 
