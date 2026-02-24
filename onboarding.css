@@ -48,7 +48,7 @@ h1 {
   /* Standard property after prefix */
   background-clip: text;
 
-  /* Fallback color */
+  /* Fallback */
   color: var(--purple);
 }
 
