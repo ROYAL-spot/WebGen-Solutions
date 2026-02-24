@@ -16,17 +16,17 @@ const token = params.get("token");
 // 🔐 ADMIN ACCESS KEY
 const ADMIN_KEY = "webgen_internal_access_2026";
 
-// If no token → block
+// Block if no token
 if (!token) {
     window.location.replace("Investment_Packages.html");
 }
 
-// If admin key → allow immediately
+// Allow admin bypass
 if (token === ADMIN_KEY) {
     console.log("Admin access granted");
 } else {
 
-    // Otherwise verify payment via Netlify function
+    // Verify real payment via Netlify function
     fetch("/.netlify/functions/verify-payment", {
         method: "POST",
         headers: {
@@ -43,8 +43,15 @@ if (token === ADMIN_KEY) {
     .catch(() => {
         window.location.replace("Investment_Packages.html");
     });
-
 }
+
+// Auto-fill hidden payment field after page loads
+window.addEventListener("DOMContentLoaded", function() {
+    const hiddenPaymentInput = document.getElementById("payment_id");
+    if (hiddenPaymentInput) {
+        hiddenPaymentInput.value = token;
+    }
+});
 </script>
 
 <div class="container">
@@ -59,6 +66,9 @@ netlify-honeypot="bot-field"
 action="/onboarding-success.html">
 
 <input type="hidden" name="form-name" value="client-onboarding">
+
+<!-- Auto captured payment ID -->
+<input type="hidden" name="payment_id" id="payment_id">
 
 <!-- Honeypot -->
 <div class="hidden-field">
@@ -77,9 +87,6 @@ action="/onboarding-success.html">
 
 <label for="phone">Contact Number</label>
 <input type="text" id="phone" name="phone" required>
-
-<label for="payment_reference">Payment Reference (from Yoco email)</label>
-<input type="text" id="payment_reference" name="payment_reference" required>
 
 <label for="services">Services / Products Offered</label>
 <textarea id="services" name="services" required></textarea>
