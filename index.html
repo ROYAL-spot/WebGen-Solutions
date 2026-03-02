@@ -263,6 +263,46 @@ footer{
         padding:15px 20px;
     }
 }
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  padding: 15px 20px;
+  display: none;
+  z-index: 9999;
+}
+
+.cookie-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cookie-banner p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cookie-banner a {
+  color: #00bcd4;
+  text-decoration: underline;
+}
+
+.cookie-banner button {
+  background: #00bcd4;
+  color: #000;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
 </style>
 </head>
 
@@ -351,10 +391,31 @@ footer{
 </section>
 
 <footer>
-    © 2024 WebGen Solutions — Innovative Insight In Action
+    © 2026 WebGen Solutions — Innovative Insight In Action
+<a href="terms.html">Terms & Conditions</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="refund-policy.html">Refund Policy</a>
 </footer>
 
+
 <script>
+    /* Cookie Consent */
+  document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+
+    if (!localStorage.getItem("cookiesAccepted")) {
+      banner.style.display = "block";
+    }
+
+    acceptBtn.addEventListener("click", function () {
+      localStorage.setItem("cookiesAccepted", "true");
+      banner.style.display = "none";
+    });
+  });
+
+
+
 /* Scroll Animation */
 const cards = document.querySelectorAll('.card');
 const observer = new IntersectionObserver(entries=>{
@@ -369,6 +430,14 @@ cards.forEach(card=>{
     observer.observe(card);
 });
 </script>
-
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <p>
+      We use cookies to improve your experience on our website. By continuing to browse, you agree to our 
+      <a href="privacy.html">Privacy Policy</a>.
+    </p>
+    <button id="accept-cookies">Accept</button>
+  </div>
+</div>
 </body>
 </html>
