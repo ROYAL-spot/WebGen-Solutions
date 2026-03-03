@@ -42,4 +42,4 @@ An interactive analytics tool that transforms raw retail data into insights:
 ## 📞 Contact
 **Somila Dyantyi** *Founder & Junior Full-Stack Developer* 📍 Based in Komani, Eastern Cape  
 📞 +27 81 799 6763  
-📧 [somiladyantyi17@gmail.com](mailto:somiladyantyi17@gmail.com)
+📧 [webgensolutions1@gmail.com](mailto:webgensolutions1@gmail.com)
