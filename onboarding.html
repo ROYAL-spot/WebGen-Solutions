@@ -1,106 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Client Onboarding | WebGen Solutions</title>
 
 <link rel="stylesheet" href="onboarding.css">
+
 </head>
+
 <body>
 
 <script>
 const params = new URLSearchParams(window.location.search);
 const token = params.get("token");
 
-// 🔐 ADMIN ACCESS KEY
 const ADMIN_KEY = "webgen_internal_access_2026";
 
-// Block if no token
 if (!token) {
-    window.location.replace("Investment_Packages.html");
+window.location.replace("Investment_Packages.html");
 }
 
-// Allow admin bypass
-if (token === ADMIN_KEY) {
-    console.log("Admin access granted");
-} else {
+if (token !== ADMIN_KEY) {
 
-    // Verify real payment via Netlify function
-    fetch("/.netlify/functions/verify-payment", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ paymentId: token })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (!data.verified) {
-            window.location.replace("Investment_Packages.html");
-        }
-    })
-    .catch(() => {
-        window.location.replace("Investment_Packages.html");
-    });
+fetch("/.netlify/functions/verify-payment", {
+method: "POST",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify({ paymentId: token })
+})
+.then(res => res.json())
+.then(data => {
+if (!data.verified) {
+window.location.replace("Investment_Packages.html");
+}
+})
+.catch(() => {
+window.location.replace("Investment_Packages.html");
+});
+
 }
 
-// Auto-fill hidden payment field after page loads
 window.addEventListener("DOMContentLoaded", function() {
-    const hiddenPaymentInput = document.getElementById("payment_id");
-    if (hiddenPaymentInput) {
-        hiddenPaymentInput.value = token;
-    }
+document.getElementById("payment_id").value = token;
 });
 </script>
 
 <div class="container">
-<h1>Complete Your Onboarding</h1>
-<p>Please complete the form below so we can begin your project.</p>
+
+<h1>Project Onboarding</h1>
+<p>Help us understand your project so we can build the perfect solution.</p>
+
+<div class="step-indicator">
+
+<div class="step-item active"><div class="step-circle">1</div><p>Business</p></div>
+<div class="step-item"><div class="step-circle">2</div><p>Details</p></div>
+<div class="step-item"><div class="step-circle">3</div><p>Features</p></div>
+<div class="step-item"><div class="step-circle">4</div><p>Design</p></div>
+<div class="step-item"><div class="step-circle">5</div><p>Content</p></div>
+<div class="step-item"><div class="step-circle">6</div><p>Files</p></div>
+<div class="step-item"><div class="step-circle">7</div><p>Review</p></div>
+
+</div>
+
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
 
 <form id="onboardingForm"
 name="client-onboarding"
 method="POST"
 data-netlify="true"
 netlify-honeypot="bot-field"
-action="/onboarding-success.html">
+action="/onboarding-success.html"
+enctype="multipart/form-data">
 
 <input type="hidden" name="form-name" value="client-onboarding">
-
-<!-- Auto captured payment ID -->
 <input type="hidden" name="payment_id" id="payment_id">
 
-<!-- Honeypot -->
 <div class="hidden-field">
-<label for="bot-field">Do not fill this field</label>
-<input id="bot-field" name="bot-field" type="text">
+<input name="bot-field" title="Bot field">
 </div>
+
+<!-- STEP 1 -->
+
+<div class="step active">
+
+<h2>Business Information</h2>
 
 <label for="full_name">Full Name</label>
-<input type="text" id="full_name" name="full_name" required>
+<input id="full_name" name="full_name" required>
 
 <label for="business_name">Business Name</label>
-<input type="text" id="business_name" name="business_name" required>
+<input id="business_name" name="business_name" required>
 
-<label for="email">Email Address</label>
-<input type="email" id="email" name="email" required>
+<label for="email">Email</label>
+<input id="email" type="email" name="email" required>
 
-<label for="phone">Contact Number</label>
-<input type="text" id="phone" name="phone" required>
+<label for="phone">Phone</label>
+<input id="phone" name="phone">
 
-<label for="services">Services / Products Offered</label>
-<textarea id="services" name="services" required></textarea>
+<label for="industry">Industry</label>
+<input id="industry" name="industry">
 
-<label for="project_goals">Describe Your Website Goals</label>
-<textarea id="project_goals" name="project_goals" required></textarea>
-
-<div class="checkbox-wrapper">
-<input type="checkbox" id="terms" name="terms" required>
-<label for="terms">I confirm I have completed my payment.</label>
 </div>
 
-<button type="submit" class="btn" id="submitBtn">Submit Onboarding</button>
+<!-- STEP 2 -->
 
+<div class="step">
+
+<h2>Business Details</h2>
+
+<label for="business_description">Describe your business</label>
+<textarea id="business_description" name="business_description"></textarea>
+
+<label for="target_customers">Who are your customers?</label>
+<textarea id="target_customers" name="target_customers"></textarea>
+
+<label for="location">Business Location</label>
+<input id="location" name="location">
+
+</div>
+
+<!-- STEP 3 -->
+
+<div class="step">
+
+<h2>Website Features</h2>
+
+<label class="checkbox"><input type="checkbox" name="feature_contact"> Contact Form</label>
+<label class="checkbox"><input type="checkbox" name="feature_booking"> Booking System</label>
+<label class="checkbox"><input type="checkbox" name="feature_payments"> Online Payments</label>
+<label class="checkbox"><input type="checkbox" name="feature_portal"> Client Portal</label>
+<label class="checkbox"><input type="checkbox" name="feature_analytics"> Analytics Dashboard</label>
+
+</div>
+
+<!-- STEP 4 -->
+
+<div class="step">
+
+<h2>Design & Branding</h2>
+
+<label for="logo_info">Do you have a logo?</label>
+<input id="logo_info" name="logo_info">
+
+<label for="brand_colors">Brand colours</label>
+<input id="brand_colors" name="brand_colors">
+
+<label for="design_style">Preferred design style</label>
+<input id="design_style" name="design_style">
+
+<label for="references">Websites you like</label>
+<textarea id="references" name="references"></textarea>
+
+</div>
+
+<!-- STEP 5 -->
+
+<div class="step">
+
+<h2>Content & Pages</h2>
+
+<label for="pages">What pages do you want?</label>
+<textarea id="pages" name="pages"></textarea>
+
+<label for="content_ready">Do you have content ready?</label>
+<input id="content_ready" name="content_ready">
+
+<label for="notes">Additional notes</label>
+<textarea id="notes" name="notes"></textarea>
+
+</div>
+
+<!-- STEP 6 -->
+
+<div class="step">
+
+<h2>Upload Files</h2>
+
+<label for="logo_file">Upload your logo</label>
+<input id="logo_file" type="file" name="logo_file">
+
+<label for="images">Upload images</label>
+<input id="images" type="file" name="images" multiple>
+
+<label for="documents">Upload documents</label>
+<input id="documents" type="file" name="documents">
+
+</div>
+
+<!-- STEP 7 REVIEW -->
+
+<div class="step">
+
+<h2>Review Your Project</h2>
+
+<div class="review-box">
+
+<div class="review-item">
+<strong>Full Name</strong>
+<span id="review_full_name"></span>
+</div>
+
+<div class="review-item">
+<strong>Business Name</strong>
+<span id="review_business_name"></span>
+</div>
+
+<div class="review-item">
+<strong>Email</strong>
+<span id="review_email"></span>
+</div>
+
+<div class="review-item">
+<strong>Industry</strong>
+<span id="review_industry"></span>
+</div>
+
+<div class="review-item">
+<strong>Description</strong>
+<span id="review_description"></span>
+</div>
+
+<div class="review-item">
+<strong>Target Customers</strong>
+<span id="review_customers"></span>
+</div>
+
+<div class="review-item">
+<strong>Design Style</strong>
+<span id="review_design"></span>
+</div>
+
+<div class="review-item">
+<strong>Pages Requested</strong>
+<span id="review_pages"></span>
+</div>
+
+</div>
+
+<p class="review-note">
+Please review your details before submitting.
+</p>
+
+</div>
+
+<div class="navigation">
+
+<button type="button" id="prevBtn">Back</button>
+<button type="button" id="nextBtn">Next</button>
+<button type="submit" id="submitBtn">Submit Project</button>
+
+</div>
+
+<div class="brief-section">
+
+<h3>Generated Project Brief</h3>
+
+<label for="projectBrief">Project Brief</label>
+<textarea id="projectBrief" readonly></textarea>
+
+<button type="button" id="copyBrief" class="btn-copy">
+Copy Brief
+</button>
+
+</div>
 </form>
 </div>
 

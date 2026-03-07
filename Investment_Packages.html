@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
+
 :root {
     --bg: #0B0F1A;
     --surface: rgba(255, 255, 255, 0.05);
@@ -17,23 +18,28 @@
     --muted: #94A3B8;
 }
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
+
+/* --- BODY --- */
 
 body {
     font-family: 'Segoe UI', sans-serif;
     background: var(--bg);
     color: var(--text);
     margin: 0;
-    padding-top: 100px; 
+    padding-top: 100px;
 }
 
-/* --- MASTER NAV STYLES --- */
+/* --- NAVBAR --- */
+
 nav {
     position: fixed;
     width: 100%;
     top: 0;
-   -webkit-backdrop-filter:blur(15px);
-    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
     background: rgba(11, 15, 26, 0.7);
     padding: 15px 40px;
     display: flex;
@@ -48,7 +54,8 @@ nav {
     color: inherit;
 }
 
-/* --- GRID SYSTEM --- */
+/* --- HEADER --- */
+
 .header {
     text-align: center;
     margin-bottom: 60px;
@@ -63,9 +70,64 @@ nav {
     margin: 0;
 }
 
+/* --- SECTION TITLE --- */
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+
+    background: linear-gradient(
+        90deg,
+        var(--purple),
+        var(--blue)
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    position: relative;
+}
+
+/* Glow effect */
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 3px;
+    margin: 12px auto 0;
+
+    background: linear-gradient(
+        to right,
+        var(--purple),
+        var(--blue)
+    );
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px var(--purple),
+        0 0 20px var(--blue);
+}
+
+/* --- SUBTITLE --- */
+
+.section-subtitle {
+    text-align: center;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 10px auto 50px auto;
+    font-size: 0.9rem;
+}
+
+/* --- PACKAGE GRID --- */
+
 .package-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
@@ -73,7 +135,10 @@ nav {
     align-items: stretch;
 }
 
+/* --- CARD --- */
+
 .card {
+    position: relative;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 20px;
@@ -89,14 +154,66 @@ nav {
     border-color: var(--purple);
 }
 
-.card h3 { color: var(--purple); margin: 0; font-size: 1.25rem; }
-.price { font-size: 1.8rem; font-weight: bold; margin: 15px 0 5px; }
-.maintenance { color: var(--muted); font-size: 0.85rem; margin-bottom: 25px; }
+/* --- MOST POPULAR CARD --- */
+
+.card.popular {
+    border: 1px solid var(--purple);
+    transform: scale(1.03);
+}
+
+.card.popular:hover {
+    transform: translateY(-10px) scale(1.03);
+}
+
+/* --- BADGE --- */
+
+.badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: linear-gradient(to right, var(--purple), var(--blue));
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* --- TEXT --- */
+
+.card h3 {
+    color: var(--purple);
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 15px 0 5px;
+}
+
+.maintenance {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+/* --- DESCRIPTION --- */
+
+.description {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* --- FEATURE LIST --- */
 
 ul {
     list-style: none;
     padding: 0;
-    margin: 0 0 30px 0;
+    margin: 0 0 25px 0;
     flex-grow: 1;
 }
 
@@ -105,10 +222,48 @@ ul li {
     font-size: 0.85rem;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-ul li i { color: var(--purple); font-size: 0.8rem; }
+/* Purple glossy tick */
+
+ul li::before {
+    content: "✔";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    font-size: 0.65rem;
+    font-weight: bold;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        var(--purple),
+        var(--blue)
+    );
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 6px rgba(168, 85, 247, 0.8),
+        inset 0 0 4px rgba(255,255,255,0.4);
+}
+
+/* --- IDEAL CLIENT TEXT --- */
+
+.ideal {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* --- BUTTON --- */
 
 .btn {
     display: block;
@@ -127,15 +282,37 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
     opacity: 0.9;
 }
 
+/* --- FOOTNOTE --- */
+
+.package-note {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin-top: 20px;
+}
+
+/* --- RESPONSIVE --- */
+
 @media (max-width: 1200px) {
-    .package-grid { grid-template-columns: repeat(2, 1fr); }
+    .package-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
-    .package-grid { grid-template-columns: 1fr; }
-    nav { padding: 15px 20px; }
-    .gradient-text { font-size: 2rem; }
+    .package-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    .gradient-text {
+        font-size: 2rem;
+    }
 }
+
 </style>
 </head>
 <body>
@@ -144,71 +321,133 @@ ul li i { color: var(--purple); font-size: 0.8rem; }
         <strong><a href="index.html" class="nav-brand">WebGen Solutions</a></strong>
     </div>
 </nav>
+<section class="packages">
 
-<div class="header">
-    <h1 class="gradient-text">Investment Packages</h1>
-    <p>Scale your digital presence with professional infrastructure.</p>
-    <p>Setup + First Month Included</p>
-</div>
+  <h2 class="section-title">Investment Packages</h2>
+  <p class="section-subtitle">
+    Choose the right digital solution for your business stage, goals, and operational needs.
+  </p>
 
-<div class="package-grid">
+  <div class="package-grid">
 
-<div class="card">
-<h3>Starter Presence</h3>
-<div class="price">R 1,750</div>
-<div class="sub-note">R250/month thereafter</div>
-<ul>
-<li><i class="fas fa-check"></i> 5-Section Website</li>
-<li><i class="fas fa-check"></i> Mobile Responsive</li>
-<li><i class="fas fa-check"></i> Contact Form</li>
-<li><i class="fas fa-check"></i> Basic SEO Setup</li>
-</ul>
-<a href="https://pay.yoco.com/r/4ZKQ8w?redirectOnPaymentSuccess=https://webgensolutions.netlify.app/onboarding.html?token={PAYMENT_ID}"
-class="btn">Get Started</a>
-</div>
+    <!-- Starter Presence -->
+    <div class="card">
+      <h3>Starter Presence</h3>
+      <div class="price">R1,750</div>
+      <p class="sub-note">R250/month maintenance</p>
 
-<div class="card">
-<h3>Business Growth</h3>
-<div class="price">R 4,850</div>
-<div class="sub-note">R350/month thereafter</div>
-<ul>
-<li><i class="fas fa-check"></i> Up to 5 Pages</li>
-<li><i class="fas fa-check"></i> Booking System</li>
-<li><i class="fas fa-check"></i> Admin Dashboard</li>
-<li><i class="fas fa-check"></i> Database Logic</li>
-</ul>
-<a href="https://pay.yoco.com/r/2BJl56?redirectOnPaymentSuccess=https://webgensolutions.netlify.app/onboarding.html?token={PAYMENT_ID}"
-class="btn">Get Started</a>
-</div>
+      <p class="description">
+        Perfect for businesses that want a professional online presence and an easy way for customers to find and contact them.
+      </p>
 
-<div class="card">
-<h3>Medical Practice</h3>
-<div class="price">R 7,050</div>
-<div class="sub-note">R550/month thereafter</div>
-<ul>
-<li><i class="fas fa-check"></i> Patient Portal</li>
-<li><i class="fas fa-check"></i> POPIA Security</li>
-<li><i class="fas fa-check"></i> Secure Forms</li>
-<li><i class="fas fa-check"></i> Email Alerts</li>
-</ul>
-<a href="https://pay.yoco.com/r/7339aN?redirectOnPaymentSuccess=https://webgensolutions.netlify.app/onboarding.html?token={PAYMENT_ID}"
-class="btn">Get Started</a>
-</div>
+      <ul>
+        <li>Professionally designed website</li>
+        <li>Mobile-friendly responsive design</li>
+        <li>Clear business information and service pages</li>
+        <li>Contact and enquiry forms</li>
+        <li>WhatsApp and call integration</li>
+        <li>Basic search engine optimisation (SEO)</li>
+        <li>Hosting, updates and technical maintenance</li>
+      </ul>
 
- <div class="card">
-        <h3>Data Intelligence</h3>
-        <div class="price">Custom</div>
-        <div class="sub-note">+ R150 / Month</div>
-        <ul>
-            <li><i class="fas fa-check"></i> R-Shiny Dashboards</li>
-            <li><i class="fas fa-check"></i> AI Sales Forecasting</li>
-            <li><i class="fas fa-check"></i> Retail Analytics</li>
-            <li><i class="fas fa-check"></i> API Integration</li>
-        </ul>
-        <a href="index.html#contact" class="btn">Request Quote</a>
+      <p class="ideal">Ideal for: barbers, plumbers, salons, tutors, small businesses</p>
+
+      <a href="https://pay.yoco.com/r/4ZKQ8w?redirectOnPaymentSuccess=https://webgensolutions.netlify.app/onboarding.html?token={PAYMENT_ID}" class="btn">
+        Get Started
+      </a>
     </div>
 
-</div>
+
+    <!-- Business Growth -->
+    <div class="card popular">
+      <span class="badge">Most Popular</span>
+
+      <h3>Business Growth</h3>
+      <div class="price">R4,850</div>
+      <p class="sub-note">R350/month maintenance</p>
+cd
+      <p class="description">
+        A more advanced website designed for businesses that need more functionality, better structure, and scalable digital tools.
+      </p>
+
+      <ul>
+        <li>Everything in Starter Presence</li>
+        <li>Expanded website structure</li>
+        <li>Advanced enquiry and form systems</li>
+        <li>Database-powered functionality</li>
+        <li>Admin-managed content and updates</li>
+        <li>Structured service or information systems</li>
+        <li>Built to support growing businesses</li>
+      </ul>
+
+      <p class="ideal">Ideal for: restaurants, schools, gyms, guesthouses, service businesses</p>
+
+      <a href="https://pay.yoco.com/r/2BJl56?redirectOnPaymentSuccess=https://webgensolutions.netlify.app/onboarding.html?token={PAYMENT_ID}" class="btn">
+        Get Started
+      </a>
+    </div>
+
+
+    <!-- Medical Practice -->
+    <div class="card">
+      <h3>Medical Practice</h3>
+      <div class="price">R7,050</div>
+      <p class="sub-note">R550/month maintenance</p>
+
+      <p class="description">
+        Designed for medical and professional practices that require secure data handling and specialised digital systems.
+      </p>
+
+      <ul>
+        <li>Everything in Business Growth</li>
+        <li>Secure forms for sensitive information</li>
+        <li>Client or patient portal style systems</li>
+        <li>Structured intake workflows</li>
+        <li>Automated notifications and confirmations</li>
+        <li>Enhanced security and protection</li>
+      </ul>
+
+      <p class="ideal">Ideal for: doctors, clinics, psychologists, physiotherapists</p>
+
+      <a href="https://pay.yoco.com/r/7339aN?redirectOnPaymentSuccess=https://webgensolutions.netlify.app/onboarding.html?token={PAYMENT_ID}" class="btn">
+        Get Started
+      </a>
+    </div>
+
+
+    <!-- Data Intelligence -->
+    <div class="card">
+      <h3>Data Intelligence</h3>
+      <div class="price">Custom</div>
+      <p class="sub-note">+ R150/month platform fee</p>
+
+      <p class="description">
+        A specialised solution for organisations that want to use their data to drive smarter decisions and business growth.
+      </p>
+
+      <ul>
+        <li>Custom analytics dashboards</li>
+        <li>Business intelligence reporting</li>
+        <li>Data integration from multiple sources</li>
+        <li>Forecasting and insights</li>
+        <li>API and automation integration</li>
+      </ul>
+
+      <p class="ideal">Ideal for: organisations and data-driven companies</p>
+
+      <a href="index.html#contact" class="btn">
+        Request Quote
+      </a>
+    </div>
+
+  </div>
+
+  <p class="package-note">
+    All packages include design, development, deployment, and ongoing technical maintenance.
+  </p>
+
+</section>
+
 
 </body>
 </html>
