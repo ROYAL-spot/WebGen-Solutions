@@ -303,7 +303,31 @@ footer{
   font-weight: bold;
   border-radius: 4px;
 }
+
+.socials {
+    text-align: center;
+    padding: 50px 20px;
+    border-top: 1px solid var(--border);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-icons a {
+    font-size: 1.6rem;
+    color: var(--muted);
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: white;
+    transform: translateY(-4px);
+}
 </style>
+
 </head>
 
 <body>
@@ -323,7 +347,9 @@ footer{
 <section class="hero" id="hero">
     <img src="images/WebGen Solutions.jpg" alt="WebGen Solutions logo">
     <h1 class="gradient-text">Is Your Business Invisible Online?</h1>
-    <p>We build powerful digital systems that help local businesses grow, automate, and compete.</p>
+   <p>
+We build professional websites & powerful digital systems that help businesses attract customers, automate operations, and grow online.
+</p>
     <a href="#contact" class="btn">Free Digital Consultation</a>
 </section>
 
@@ -427,8 +453,22 @@ footer{
     </div>
 </section>
 
+<section class="socials">
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61580567751660" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/webgen_solutions/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/27817996763" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+</section>
+
 <footer>
-    © 2026 WebGen Solutions — Innovative Insight In Action
+    © 2026 WebGen Solutions — All righs reserved.
 <a href="terms.html">Terms & Conditions</a> |
 <a href="privacy.html">Privacy Policy</a> |
 <a href="refund-policy.html">Refund Policy</a>
